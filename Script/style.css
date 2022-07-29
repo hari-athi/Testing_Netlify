@@ -1,0 +1,63 @@
+.container-fluid{
+    background-color:rgb(235, 232, 232);
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-flow:wrap;
+
+  }
+
+
+  .box{
+    width: 400px;
+    height: 150px;
+    margin: 10px;
+    background-image: linear-gradient(to right, #6bc8d1, #5cc0d6, #53b7d9, #52addb, #5ba2db, #6e9fdb, #809bd9, #9098d6, #a49dd6, #b5a3d6, #c4a9d6, #d1b0d6);
+    text-align:center;
+    transition-timing-function:linear;
+    
+  }
+
+  .userimage{
+    border:1px solid black;
+    border-radius: 25%;
+    align-self: center;
+  }
+  .username{
+    color: #361e01;
+    font-size: medium;
+    font-weight: bolder;
+    transition: 2s;
+  }
+  .box:hover .userimage{
+    transform:scale(1.4);
+  }
+  .box:hover .username{
+    font-style: italic;
+    color: forestgreen;
+  }
+  .box:hover{
+    transform:scale(0.5);
+    opacity: 0.7;
+  }
+  @media screen and (max-width:600px) {
+    .box{
+      width: 300px;
+      height: 150px;
+    }
+  }
+  @media screen and (min-width:600px) {
+    .box{
+      width: 600px;
+      height: 100px;
+    }
+    .container-fluid{
+      background:url(./cluster.png);
+    }
+  }
+  @media  (max-width:180px) {
+    .username{
+      text-overflow:clip;
+    }
+  }
