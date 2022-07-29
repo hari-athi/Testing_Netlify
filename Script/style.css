@@ -44,7 +44,7 @@
     font-weight: bold;
   }
   .box:hover{
-    transform:scale(0.5);
+    transform:skew(5deg,0deg);
     opacity: 0.7;
   }
   @media screen and (max-width:600px) {
