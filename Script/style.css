@@ -16,6 +16,7 @@
     background-image: linear-gradient(to right, #6bc8d1, #5cc0d6, #53b7d9, #52addb, #5ba2db, #6e9fdb, #809bd9, #9098d6, #a49dd6, #b5a3d6, #c4a9d6, #d1b0d6);
     text-align:center;
     transition-timing-function:linear;
+    box-radius:20px;
     
   }
 
