@@ -1,0 +1,115 @@
+/* .style_h6{
+  text-align: center;
+  font-style: italic;
+}
+#ak{
+  color: red;
+}
+.unlis{
+list-style-type:circle;
+} */
+body{
+  display: grid;
+  height: 100vh;
+  place-items:center;
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 2%, rgba(253,29,29,1) 30%, rgba(252,176,69,1) 69%);
+}
+
+.user_container{
+    background-color:rgb(235, 232, 232);
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-flow:wrap;
+
+  }
+
+
+  .box{
+    width: 400px;
+    height: auto;
+    margin: 10px;
+    background-image: linear-gradient(to right, #6bc8d1, #5cc0d6, #53b7d9, #52addb, #5ba2db, #6e9fdb, #809bd9, #9098d6, #a49dd6, #b5a3d6, #c4a9d6, #d1b0d6);
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+    transition-timing-function:linear;
+    border-radius: 20px;
+    
+  }
+
+  .userimage{
+    border:1px solid black;
+    border-radius: 25%;
+    align-self: center;
+  }
+  .username{
+    color: #361e01;
+    font-size: medium;
+    font-weight: bolder;
+    transition: 2s;
+  }
+
+  button{
+    background-color: green;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    border: 10px white;
+    margin: 100px;
+    box-shadow: 1px 3px 10px 5px rgb(8, 180, 192);
+  }
+  button:active{
+    background-color: rgb(1, 75, 1);
+    box-shadow: 1px 0px 5px 2px greenyellow;
+  }
+  .user_delete{
+    border-radius: 5px;
+  }
+  .user_edit{
+    border-radius: 5px;
+    margin-left: 5px;
+  }
+
+
+  .time{
+    transition: 1.5s;
+  }
+  .box:hover .userimage{
+    transform:scale(1.1);
+  }
+  .box:hover .username{
+    font-style: italic;
+    color: forestgreen;
+  }
+  .box:hover .time{
+    font-weight: bold;
+  }
+  .box:hover{
+    transform:scale(1.2);
+    opacity: 0.9;
+  }
+  @media screen and (max-width:600px) {
+    .box{
+      width: 350px;
+      height: auto;
+    }
+  }
+  @media screen and (min-width:600px) {
+    .box{
+      width: 600px;
+      height: auto;
+    }
+    .user_container{
+      background: rgb(131,58,180);
+      background: linear-gradient(90deg, rgba(131,58,180,1) 2%, rgba(253,29,29,1) 30%, rgba(252,176,69,1) 69%);
+    }
+ 
+  }
+  @media  (max-width:180px) {
+    .username{
+      text-overflow:clip;
+    }
+  }
