@@ -42,6 +42,8 @@ body{
 
   .userimage{
     border:1px solid black;
+    height:100px;
+    width:100px;
     border-radius: 25%;
     align-self: center;
   }
