@@ -59,7 +59,7 @@ body{
     border-radius: 20px;
     border: 10px white;
     margin: 100px;
-    box-shadow: 1px 3px 10px 5px rgb(8, 180, 192);
+    box-shadow: 1px 0px 10px 5px rgb(8, 180, 192);
   }
   button:active{
     background-color: rgb(1, 75, 1);

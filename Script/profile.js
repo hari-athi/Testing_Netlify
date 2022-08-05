@@ -102,37 +102,49 @@
 
 
 //------------------------------------------------------
-// async function getuser(){
-// const data = await fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{method:"GET"});
-// const user = await data.json();
-// const no = Math.ceil(user.length/10);
-// const pagination = document.querySelector(".pagination");
+async function getuser(){
+const data = await fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{method:"GET"});
+const user = await data.json();
+list();
+const no = Math.ceil(user.length/10);
+const pagination = document.createElement("div");
+pagination.className = "pagination";
 
-// for(let i = 0; i<no; i++){
-//   const page = document.createElement("button");
-//   page.innerText=i+1;
-//   page.onclick = function(){
-//     const pageusers = user.slice(i*10,(i+1)*10);
-//   };
-//   document.querySelector(".user_container").remove();
-//   load_user(pageusers);
-//   pagination.append(page);
-// }
+for(let i = 0; i<no; i++){
+  const page = document.createElement("button");
+  page.innerText=i+1;
+  page.onclick = function(){
+    const pageusers = user.slice(i*10,(i+1)*10);
+    document.querySelector(".user_container").remove();
+    load_user(pageusers);
+  };
+  pagination.append(page);
+}
+document.body.append(pagination);
+//--------------------------------------------------------
+async function list(){
+  const data = await fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{method:"GET"});
+  const user = await data.json();
+  const firstten = user.slice(0,10);
+  console.log(firstten);
+  load_user(firstten);
 
+}
+//--------------------------------------------------------
 // const firstten = user.slice(0,10);
 // console.log(firstten);
 // load_user(firstten);
-// // refresh();
+// refresh();
 
-// }
+}
 
 //--------------------------------------------------------
 
-function getuser(){
-  fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{method:"GET"})
-  .then((data) => data.json())
-  .then((users) => load_user(users));
-}
+// function getuser(){
+//   fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{method:"GET"})
+//   .then((data) => data.json())
+//   .then((users) => load_user(users));
+// }
 //---------------------------------------------------------
 
  function load_user(users){
@@ -241,6 +253,7 @@ getuser();
 //----------------------------------------------------------------------
  function refresh(){
   reset();
+  document.querySelector(".pagination").remove();
   getuser();
  }
  //---------------------------------------------------------------------
