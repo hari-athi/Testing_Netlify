@@ -100,12 +100,40 @@
 //  });
 //  document.body.append(container);
 
-function getuser(){
-fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{method:"GET"})
-.then((data) => data.json())
-.then((users) => load_user(users));
-}
 
+//------------------------------------------------------
+// async function getuser(){
+// const data = await fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{method:"GET"});
+// const user = await data.json();
+// const no = Math.ceil(user.length/10);
+// const pagination = document.querySelector(".pagination");
+
+// for(let i = 0; i<no; i++){
+//   const page = document.createElement("button");
+//   page.innerText=i+1;
+//   page.onclick = function(){
+//     const pageusers = user.slice(i*10,(i+1)*10);
+//   };
+//   document.querySelector(".user_container").remove();
+//   load_user(pageusers);
+//   pagination.append(page);
+// }
+
+// const firstten = user.slice(0,10);
+// console.log(firstten);
+// load_user(firstten);
+// // refresh();
+
+// }
+
+//--------------------------------------------------------
+
+function getuser(){
+  fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{method:"GET"})
+  .then((data) => data.json())
+  .then((users) => load_user(users));
+}
+//---------------------------------------------------------
 
  function load_user(users){
 
@@ -124,13 +152,15 @@ fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{method:"GET"})
    <p class='username'>${user.name}<p>
    <p class='time'>${new Date(user.createdAt).toDateString()}</p>
    <button onclick="deleteuser(${user.id})" class = "user_delete">Delete</buuton>
+   <button onclick="edituser('${user.id}','${user.name}','${user.avatar}')" class = "user_edit">Edit</button>
    </div>`
    container.append(content);
  });
  document.body.append(container);
  }
+ //---------------------------------------------------------
 getuser();
-
+//----------------------------------------------------------
  function adduser(){
 
   const name = document.querySelector(".new_user").value;
@@ -141,19 +171,45 @@ getuser();
     avatar : url,
     createdAt : date
   }
+  const method = document.querySelector(".addinguser").innerText ==="Edit user" ? 'PUT' : 'POST';
+  const uid = method === 'PUT' ? localStorage.getItem("userid") : "";
+  // console.log(uid);
 
- fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json"
- },
- body: JSON.stringify(user_detail)
-}).then((users) => {
-  refresh();
-});
- 
- }
+  fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users/"+uid,{
+    method:method,
+    headers:{
+      "Content-Type":"application/json"
+   },
+   body: JSON.stringify(user_detail)
+  }).then((users) => {
+    refresh();
+  });  
+}
+//----------------------------------------------------------------------
+// if(method == 'Add'){
 
+//   fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users",{
+//    method:"POST",
+//    headers:{
+//      "Content-Type":"application/json"
+//   },
+//   body: JSON.stringify(user_detail)
+//  }).then((users) => {
+//    refresh();
+//  });
+// }else{
+//   const uid = window.localStorage.getItem("userid");
+//   fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users/"+uid,{
+//    method:"PUT",
+//    headers:{
+//      "Content-Type":"application/json"
+//   },
+//   body: JSON.stringify(user_detail)
+//  }).then((users) => {
+//    refresh();
+//  });
+// }
+//---------------------------------------------------------------------
  function deleteuser(id){
 
   fetch("https://62ea7549ad295463258d0e6a.mockapi.io/users/"+id,{
@@ -166,11 +222,25 @@ getuser();
   refresh();
 });
  }
+//----------------------------------------------------------------------
+ function edituser(userid,username,url){
+   document.querySelector(".new_user").value=username;
+   document.querySelector(".imageurl").value=url;
+   document.querySelector(".addinguser").innerText="Edit user";
+   console.log(userid);
+   localStorage.setItem("userid",userid);
+ }
+//----------------------------------------------------------------------
+ function reset(){
 
+   document.querySelector(".user_container").remove();
+   document.querySelector(".new_user").value = "";
+   document.querySelector(".imageurl").value = "";
+   document.querySelector(".addinguser").innerText = "Add";
+ }
+//----------------------------------------------------------------------
  function refresh(){
-  document.querySelector(".user_container").remove();
-  document.querySelector(".new_user").value = "";
-  document.querySelector(".imageurl").value = "";
-  document.querySelector(".addinguser").innerText = "Add";
+  reset();
   getuser();
  }
+ //---------------------------------------------------------------------

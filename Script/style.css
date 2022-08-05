@@ -8,12 +8,12 @@
 .unlis{
 list-style-type:circle;
 } */
-
-
 body{
   display: grid;
   height: 100vh;
   place-items:center;
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 2%, rgba(253,29,29,1) 30%, rgba(252,176,69,1) 69%);
 }
 
 .user_container{
@@ -51,6 +51,29 @@ body{
     font-weight: bolder;
     transition: 2s;
   }
+
+  button{
+    background-color: green;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    border: 10px white;
+    margin: 100px;
+    box-shadow: 1px 3px 10px 5px rgb(8, 180, 192);
+  }
+  button:active{
+    background-color: rgb(1, 75, 1);
+    box-shadow: 1px 0px 5px 2px greenyellow;
+  }
+  .user_delete{
+    border-radius: 5px;
+  }
+  .user_edit{
+    border-radius: 5px;
+    margin-left: 5px;
+  }
+
+
   .time{
     transition: 1.5s;
   }
@@ -80,8 +103,10 @@ body{
       height: auto;
     }
     .user_container{
-      background:url(./cluster.jpg);
+      background: rgb(131,58,180);
+      background: linear-gradient(90deg, rgba(131,58,180,1) 2%, rgba(253,29,29,1) 30%, rgba(252,176,69,1) 69%);
     }
+ 
   }
   @media  (max-width:180px) {
     .username{
