@@ -1,0 +1,49 @@
+body{
+    background-color: rgb(18, 18, 83);
+}
+.Bar{
+    text-align: center;
+    background-color: rgb(18, 18, 82);
+}
+.avat{
+    background-color: rgb(18, 18, 83);
+    text-align: center;
+    padding: 70px;
+}
+button{
+    background-color: rgb(9, 9, 100);
+    color: white;
+}
+.pagination{
+    justify-content: center;
+}
+.avatar{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.name{
+    color: whitesmoke;
+}
+.content{
+    background-color: rgb(18, 18, 83);
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+.card{
+    background-color: rgb(10, 10, 117);
+    color: wheat;
+    margin: 1%;
+    border-radius:5% ;
+    height: 160px;
+    text-align: center;
+    width: 220px;
+    box-shadow: 2px 2px 10px 2px orangered;
+    
+}
+
+.content :hover{
+    transform:scale(1.2);
+    opacity: 1.2;
+}
